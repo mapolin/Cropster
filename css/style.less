@@ -1,0 +1,97 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import 'mixin.less';
+
+.mixi-frames() {
+    from { border-color: #bc330d; .box-shadow(0 0 9px #333); }
+    50% { border-color: #e33100; .box-shadow(0 0 18px #e33100); }
+    to { border-color: #bc330d; .box-shadow(0 0 9px #333); }
+}
+
+.animation-frames {
+    @-webkit-keyframes redPulse { .mixi-frames };
+    @-moz-keyframes redPulse { .mixi-frames };
+    @-ms-keyframes redPulse { .mixi-frames };
+    @-o-keyframes redPulse { .mixi-frames };
+    @keyframes redPulse { .mixi-frames };
+}
+
+.error {
+    .animation-frames;
+    .animation( redPulse );
+    .animation-iteration-count( infinite );
+}
+
+.t-body {
+    display: table;
+    width: 100%;
+}
+
+.t-row {
+    display: table-row;
+}
+
+* {
+    .box-sizing(border-box);
+    border-colllapse: collapse;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #303030;
+    font-family: 'Roboto', Helvetica, Arial;
+}
+
+aside {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    padding: 10px;
+    display: table-cell;
+    vertical-align: top;
+
+    .file-drop {
+        width: 230px;
+        height: 230px;
+        display: inline-block;
+        border: 5px dotted rgba(80,80,80,.3);
+        cursor: pointer;
+        position: relative;
+
+        .transition(all .3s ease-out);
+
+        &:before {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            display: block;
+            top: 20%;
+            left: 10%;
+            font-size: 30px;
+            text-align: center;
+            line-height: 2;
+            color: rgba(80,80,80,.3);
+            content: 'Drag & Drop Image Here';
+
+            .transition(all .3s ease-out);
+        }
+
+        &:hover,
+        .hover {
+            border-color: rgba(140, 140, 140, .3);
+
+            &:before {
+                color: rgba(140, 140, 140, .3);
+            }
+        }
+    }
+}
+
+section {
+    &.painter {
+        display: table-cell;
+        padding: 10px;
+        width: 100%;
+        border-left: 3px dotted rgba(140, 140, 140, .3);
+    }
+}
